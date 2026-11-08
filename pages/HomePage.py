@@ -5,16 +5,17 @@ class HomePage:
     def __init__(self, page: Page):
         self.page = page
 
-        # self.search_button = page.locator("button.search-bar-trigger")
+        # Header Area
+        self.browse_button = page.get_by_role('button', name='Browse')
+
+        # Search Area
         self.search_button = page.get_by_role("button", name="Search")
 
-        self.search_modal = page.get_by_role(
-            "dialog", name="Search Open Library"
-        )
+        self.search_text = page.get_by_role("searchbox", name="Search")
 
-        self.search_text = page.locator("input.search-input:visible")
-
-
+        # Search Results Area
+        self.search_modal = page.get_by_role("dialog", name="Search Open Library")
+        
         self.submit_search_button = page.locator(
             'button[aria-label^="See all"]'
         )
